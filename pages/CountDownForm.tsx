@@ -31,7 +31,7 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
       (values) => onSubmit(values)
       }
     > 
-    {({values}) => (
+    {({values, handleChange}) => (
         <Form>
           <div>
             <Field 
@@ -53,10 +53,10 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
             id="dateOn"
             name="date"
             label="on the big day"
-            type="datetime-local"
+            type="date"
             margin="normal"
-            //defaultValue="2022-05-30"
-            // className={classes.textField}
+            value={values.date}
+            onChange={handleChange}
             InputLabelProps={{
               shrink: true,
             }}
@@ -81,12 +81,14 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
           <PreviewCard 
             firstName={values.firstName}
             firstName2={values.firstName2}
-            dateOn={values.dateOn}
+            date={values.date}
             email={values.email}
           />
+          {/* 
+          Pre tag used for testing purposes only...
           <pre>
             {JSON.stringify(values, null, 2)}
-          </pre>
+          </pre> */}
         </Form> 
       )}
       </Formik> 

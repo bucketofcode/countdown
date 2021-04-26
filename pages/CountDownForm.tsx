@@ -3,9 +3,10 @@ import { Field, Form, Formik } from 'formik';
 import Button from '@material-ui/core/Button';
 import { CountDownField } from './CountDownField';
 import { TextField } from '@material-ui/core';
+import { PreviewCard } from './PreviewCard';
 
 
-interface Values {
+export interface Values {
   firstName:string;
   firstName2:string;
   email:string;
@@ -19,7 +20,10 @@ interface Props {
 
 
 
+
 export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
+    
+    
     return (
     <Formik 
     initialValues={{firstName: "", firstName2:"", date:"", email:""}} 
@@ -46,10 +50,12 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
           <br/>
           <div>
           <TextField
+            id="dateOn"
             name="date"
             label="on the big day"
-            type="date"
-            // defaultValue="2017-05-24"
+            type="datetime-local"
+            margin="normal"
+            //defaultValue="2022-05-30"
             // className={classes.textField}
             InputLabelProps={{
               shrink: true,
@@ -72,6 +78,12 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
           <br/>
           <br/>
           <br/>
+          <PreviewCard 
+            firstName={values.firstName}
+            firstName2={values.firstName2}
+            dateOn={values.dateOn}
+            email={values.email}
+          />
           <pre>
             {JSON.stringify(values, null, 2)}
           </pre>

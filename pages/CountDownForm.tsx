@@ -5,28 +5,22 @@ import { CountDownField } from './CountDownField';
 import { TextField } from '@material-ui/core';
 import { PreviewCard } from './PreviewCard';
 
-
 export interface Values {
   firstName:string;
   firstName2:string;
   email:string;
-  date:string;
+  date:Date;
 }
-
 
 interface Props {
   onSubmit: (values: Values)  => void;
 }
 
-
-
-
 export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
-    
-    
+  
     return (
     <Formik 
-    initialValues={{firstName: "", firstName2:"", date:"", email:""}} 
+    initialValues={{firstName: "", firstName2:"", date: new Date() , email:""}} 
     onSubmit={
       (values) => onSubmit(values)
       }

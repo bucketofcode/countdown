@@ -20,12 +20,12 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
   
     return (
     <Formik 
-    initialValues={{firstName: "", firstName2:"", date: new Date() , email:""}} 
-    onSubmit={
+      initialValues={{firstName: "", firstName2:"", date: (new Date(2021,12,11)) , email:""}} 
+      onSubmit={
       (values) => onSubmit(values)
       }
     > 
-    {({values, handleChange}) => (
+    {({values, setFieldValue}) => (
         <Form>
           <div>
             <Field 
@@ -49,8 +49,13 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
             label="on the big day"
             type="date"
             margin="normal"
-            value={values.date}
-            onChange={handleChange}
+            value={new Date(values.date)}
+            onChange={value => {
+              // overriding default behavior of the Formik setFieldValue so we can set the type as Date. 
+              // Otherwise Formik will read the changed value as a String and this will cause the Preview component to fail.
+              // There may be a nicer way to do this?
+              setFieldValue("date", new Date(value.target.value))
+            } }
             InputLabelProps={{
               shrink: true,
             }}

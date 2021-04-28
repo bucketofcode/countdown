@@ -16,8 +16,21 @@ interface Props {
   onSubmit: (values: Values)  => void;
 }
 
-export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
+const todaysDate = ():string => {
   
+  let newDate = new Date()
+  let month = ( (newDate.getMonth()+1).toString().length < 2 ) ?"0"+(newDate.getMonth()+1).toString() : (newDate.getMonth()+1).toString()
+  let year = newDate.getFullYear().toString();
+ 
+  let date = (newDate.getDate().toString().length < 2) ? "0"+newDate.getDate().toString() : newDate.getDate().toString();
+
+  console.log(year + "-" + month + "-" + date)
+  return year + "-" + month + "-" + date 
+}
+
+export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
+
+
     return (
     <Formik 
       enableReinitialize={true} 
@@ -46,6 +59,7 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
           <br/>
           <div>
           <TextField
+            inputProps={{min: todaysDate()}}
             id="date"
             name="date"
             label="on the big day"

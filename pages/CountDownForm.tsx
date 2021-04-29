@@ -34,7 +34,7 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
     return (
     <Formik 
       enableReinitialize={true} 
-      initialValues={{firstName: "", sometest:"",firstName2:"", date: (new Date(2021,12,11)) , email:""}} 
+      initialValues={{firstName: "", sometest:"",firstName2:"", date: (new Date()) , email:""}} 
       onSubmit={
       (values) => onSubmit(values)
       }

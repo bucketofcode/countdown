@@ -62,12 +62,26 @@ export const PreviewCard: React.FC<Values> = ({firstName, firstName2, date}) => 
         if (!remaining[interval]) {
             return;
         }
+        
+        // only display preview for dates in the future
+        if (remaining[interval] < 0){
+            return
+        }
+
         timerComponents.push(
             <span>
             {remaining[interval]} {interval}{" "}
             </span>
         );
         });
+    
+    // logic to control showing or hiding the date and count information
+    let countDownDiv;
+    let dateDiv;
+    if (timerComponents.length > 0 ){
+        countDownDiv = <div>{timerComponents.length ? timerComponents : <span>The big day has arrived!</span>}</div>
+        dateDiv = new Date(date).toString()
+    }
 
     return (
         <React.Fragment>
@@ -85,12 +99,11 @@ export const PreviewCard: React.FC<Values> = ({firstName, firstName2, date}) => 
                      {firstName} { firstName2.length >0 ? "&" : "" } {firstName2} <br/>
                  </Typography>
                  <Typography color="textSecondary" gutterBottom variant="h6" component="h3" >
-                    {new Date(date).toString()}
+                    {dateDiv}
+                    {/* {new Date(date).toString()} */}
                  </Typography>
                  <Typography color="textSecondary" gutterBottom variant="h3" component="h3" >
-                
-                 <div>{timerComponents.length ? timerComponents : <span>Time's up!</span>}</div>
-                
+                    {countDownDiv} 
                  </Typography>
               </CardContent>
              </Card>

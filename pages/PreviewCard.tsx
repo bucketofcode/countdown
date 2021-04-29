@@ -80,7 +80,7 @@ export const PreviewCard: React.FC<Values> = ({firstName, firstName2, date}) => 
     let dateDiv;
     if (timerComponents.length > 0 ){
         countDownDiv = <div>{timerComponents.length ? timerComponents : <span>The big day has arrived!</span>}</div>
-        dateDiv = new Date(date).toString()
+        dateDiv = new Date(date).toDateString()
     }
 
     return (
@@ -88,22 +88,22 @@ export const PreviewCard: React.FC<Values> = ({firstName, firstName2, date}) => 
             
              <Card>
               <CardContent>
-                <Typography color="textSecondary" gutterBottom variant="h4" component="h2">
-                    Preview 
+                <Typography color="textSecondary" gutterBottom variant="h5" component="h2">
+                    --Preview-- 
                  </Typography>
-                <Typography color="textSecondary" gutterBottom variant="h4" component="h2">
+                <Typography color="textSecondary" gutterBottom variant="h5" component="h2">
                      Wedding Day  Countdown for 
                  </Typography>
                  <Typography gutterBottom variant="h2" component="h2" >
                      
                      {firstName} { firstName2.length >0 ? "&" : "" } {firstName2} <br/>
                  </Typography>
-                 <Typography color="textSecondary" gutterBottom variant="h6" component="h3" >
-                    {dateDiv}
-                    {/* {new Date(date).toString()} */}
-                 </Typography>
-                 <Typography color="textSecondary" gutterBottom variant="h3" component="h3" >
+                 
+                 <Typography color="textSecondary" gutterBottom variant="h2" component="h3" >
                     {countDownDiv} 
+                 </Typography>
+                 <Typography color="textSecondary" gutterBottom variant="h4" component="h3" >
+                    {dateDiv}
                  </Typography>
               </CardContent>
              </Card>

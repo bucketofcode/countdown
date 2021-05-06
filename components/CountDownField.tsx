@@ -19,3 +19,5 @@ return (
 );
 
 }
+
+export default CountDownField;

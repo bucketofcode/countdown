@@ -109,3 +109,4 @@ export const CountDownForm: React.FC<Props> = ({onSubmit}) => {
       );
     };
   
+    export default CountDownForm;

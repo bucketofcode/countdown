@@ -31,7 +31,7 @@ const Remaining = ({difference}:FunctionProps) => {
 };
 
 const CalculateDifference = ({date}:CalculateDifferenceProps): number => {
-    let currentTime = new Date().getTime()/1000;    
+    let currentTime = (new Date()).getTime()/1000;    
     let diff = date.getTime()/1000 - currentTime;
     return diff
 }
@@ -110,3 +110,5 @@ export const PreviewCard: React.FC<Values> = ({firstName, firstName2, date}) => 
         </React.Fragment>
     );
 };
+
+export default PreviewCard;

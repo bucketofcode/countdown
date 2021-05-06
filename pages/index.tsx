@@ -1,4 +1,4 @@
-import { CountDownForm } from "./CountDownForm";
+import CountDownForm from "../components/CountDownForm";
 
 const Index = () => (
     <div style= {{ verticalAlign: "middle", textAlign: "center"}}>

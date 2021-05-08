@@ -1,3 +1,4 @@
+import React from 'react';
 import CountDownForm from "../components/CountDownForm";
 
 const Index = () => (
